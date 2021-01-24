@@ -1,0 +1,82 @@
+
+<div class="formMargin">
+<h1>Admin Area</h1>
+
+<button class="ui red button" (click)="logOut()">LOGOUT</button>
+
+<h1>Cinema-Halls</h1>
+<div class="ui cards">
+    <div *ngFor="let h of halls" class="ui card">
+        <div class="content">
+
+        <div class="header">Hall {{ h.id }}</div>
+
+        <p>Name: {{h.name}}</p>
+
+        </div>
+        <button class="ui yellow button" [routerLink]="['rows', h.id]"> Edit Rows<i class="right icon wrench"></i></button>
+        <button class="ui violet button" [routerLink]="['seats', h.id]"> Edit Seats<i class="right icon user"></i></button>
+
+    </div>
+
+
+    <!-- <div class="ui card" style="background-color: black">
+        <div class="content">
+            <div class="header" style="color: white;">New Hall</div>
+
+        </div>
+
+        <div class="ui input">
+            <input type="text" placeholder="Name" #hallname  >
+        </div>
+
+        <button class="ui green button" (click)="createHall(hallname.value)"> Add Hall<i class="right icon plus"></i></button>
+
+    </div> -->
+</div>
+
+<h1>Categories</h1>
+<div class="ui cards">
+    <form *ngFor="let c of categories" class="ui card" #changePriceForm="ngForm" >
+
+        <div class="content" >
+
+            <div class="header">Category {{c.name}}</div>
+
+            <p>Price: {{c.price}} <i class="icon euro sign"></i></p>
+
+        </div>
+
+        <div class="ui input">
+            <input type="text" placeholder="New Price" name="price" #np required [(ngModel)]="catValidation[c.name]" pattern="[0-9]+">
+        </div>
+
+        
+        <button class="ui green button" (click)="updatePrice(c,np.value)" [disabled]="changePriceForm.invalid"> Change Price<i class="right icon euro sign"></i></button>
+
+    </form>
+
+    <form class="ui card" style="background-color: black" #createCatForm="ngForm">
+        <div class="content">
+            <div class="header" style="color: white;">New Category</div>
+
+
+        </div>
+        <div class="ui input field">
+            <input type="text" [(ngModel)]="newCatName" #catname placeholder="Name" required name="name" >
+        </div>
+
+        <div class="ui input field">
+            <input type="text" [(ngModel)]="newCatPrice" #catprice placeholder="Price" required name="price" pattern="[0-9]+" >
+        </div>
+
+        <button class="ui green button" (click)="createCategory(catname.value,catprice.value)" [disabled]="createCatForm.invalid"> Add Category<i class="right icon plus"></i></button>
+
+    </form>
+</div>
+
+</div>
+
+
+
+

@@ -1,0 +1,41 @@
+
+
+
+   <apollo-film-search></apollo-film-search>
+   
+<div style="margin: 20px;">
+    
+    <div class="ui input">
+        <input type="text" #genre placeholder="Genre"  >
+    </div>
+
+    <button class="ui green button" (click)="getByGenre(genre.value)" style="margin-left: 10px;">Genre Filter <i class="right search icon"></i>  </button>
+
+
+    <div class="ui input">
+        <input matInput [matDatepicker]="from" [(ngModel)]="fromDate" style="margin-left: 10px;" placeholder="From">
+    </div>
+    <mat-datepicker-toggle matSuffix [for]="from"></mat-datepicker-toggle>
+    <mat-datepicker #from></mat-datepicker>
+
+    <div class="ui input">
+        <input matInput [matDatepicker]="to" [(ngModel)]="toDate" placeholder="To">
+    </div>
+    <mat-datepicker-toggle matSuffix [for]="to"></mat-datepicker-toggle>
+    <mat-datepicker #to></mat-datepicker>
+
+
+
+    <button class="ui green button" (click)="getByDate()">Date Filter <i class="right search icon"></i> </button>
+</div>
+
+<button *ngIf="auth.isLoggedIn()" class="ui yellow button" style="margin-left: 10px;" routerLink="../createFilm">Add Film <i class="plus icon right"></i></button>
+
+<div class="ui divided items" > 
+    
+        <div class="apollo-film-list-item item default" *ngFor="let f of films"  [film]="f" style="margin: 10px;" >
+            <!-- <apollo-film-list-item *ngFor="let f of films"  [film]="f"></apollo-film-list-item> -->
+        </div>
+   
+</div>
+

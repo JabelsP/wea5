@@ -1,0 +1,51 @@
+
+
+
+<form  class="ui form formMargin"  #createFilmForm="ngForm">
+    <h1>Create Film</h1>
+
+    <div class="field">
+        <label>Title</label>
+        <input [(ngModel)]="title" required name="title">
+    </div>
+
+    <div class="field">
+        <label>Genre</label>
+        <input [(ngModel)]="genre" required name="genre">
+    </div>
+
+    <div class="field">
+        <label>Length</label>
+        <input [(ngModel)]="length" pattern="[0-9]*" required name="length">
+    </div>
+
+    <div class="field">
+        <label>Description</label>
+        <textarea [(ngModel)]="description" required name="desc"></textarea>
+    </div>
+
+    <div class="field">
+        <label>Image</label>
+        <input [(ngModel)]="image" required name="image">
+    </div>
+
+    <div class="field">
+        <label>Trailer</label>
+        <input [(ngModel)]="trailer" required name="trailer">
+    </div>
+
+    <div class="field">
+        <label>Actors</label>
+        <textarea rows="2" [(ngModel)]="actors" required name="actors"></textarea>
+    </div>
+
+
+
+
+
+
+    <button class="ui green button" (click)="onSubmit()"  [disabled]="createFilmForm.invalid">Create <i class="right icon plus" ></i></button>
+
+
+  
+</form>

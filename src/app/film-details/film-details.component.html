@@ -1,0 +1,67 @@
+
+<div class="ui grid" style="margin: 10px;">
+
+    <div class="four column row">
+
+        <div class="three wide column" *ngIf="film">
+            <button *ngIf="auth.isLoggedIn()" class="ui red button" (click)="deleteMovie()">delete movie <i class="right icon delete"></i></button>
+                <img class="ui large image" [src]="film?.image">
+
+
+
+        </div>
+
+        <div class="eight wide column">
+                       
+            <h1>{{ film?.title }}</h1>
+            <h3>Genre</h3> {{ film?.genre }}
+
+            <h3>Description</h3>
+            {{ film?.description }}
+
+
+            <h4>Length</h4>
+                {{ film?.length }}
+            
+            
+            <h4>Actors</h4>
+            {{film?.actors}}
+
+
+            <h4>Trailer</h4>
+               <a href="{{ film?.trailer }}"> {{ film?.trailer }}</a>
+
+
+        </div>
+
+        
+        <div class="column">
+            <button *ngIf="auth.isLoggedIn()" class="ui green button" [routerLink]="['../../createSchedule', film.id]" >Add Schedule <i class="right plus icon"></i></button>
+            <div class="one column grid">
+                <div *ngFor="let s of schedule" class="ui card">
+                    <div class="content">
+                        
+                    <div class="header">{{ s.startTime| date:'medium'  }}</div>
+                    
+                    <p>Hall: {{s.cinemaHallId}}</p>
+                    
+                    <i class="user icon"></i>
+                    {{s.freeSeats}} Free Seats
+
+                    </div>
+                    <button *ngIf="auth.isLoggedIn()" class="ui red button" (click)="delete(s)">Delete Schedule<i class="right delete icon"></i></button>
+                    
+                </div>
+            </div>
+        
+        </div>
+
+    </div>
+
+
+    <button *ngIf="auth.isLoggedIn()" class="ui yellow button" [routerLink]="['edit']">Edit Film <i class="right wrench icon" ></i></button>
+    <button (click)="showFilmList()" class="ui red button">Back to Overview <i class="right list icon"></i></button>
+
+</div>
+
+

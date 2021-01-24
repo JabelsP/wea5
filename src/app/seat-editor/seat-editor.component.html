@@ -1,0 +1,49 @@
+
+<div class="formMargin">
+
+<form  class="ui  form" #seatCreator="ngForm">
+
+  <h2>Seat Editor</h2>
+
+    <div class="field">
+  
+
+        <label>RowNumber</label>
+        <select class="ui fluid dropdown" [(ngModel)]="newRowNumber" name="rowNumber" required>
+            <option  *ngFor="let r of rows" value="{{r.rowNumber}}">{{r.rowNumber}}</option>
+        </select>
+    </div>
+
+    <div class="field">
+        <label>SeatNumber</label>
+        <input [(ngModel)]="newSeatNumber" name="SeatNumber" required pattern="[0-9]*">
+    </div>
+
+    <button class="ui green button" (click)="onSubmit()" [disabled]="seatCreator.invalid">Create Seat <i class="right icon plus"></i></button>
+
+
+  
+  </form>
+
+
+
+<div class="ui items">
+    <div *ngFor="let s of seats" class="item">
+      <div class="ui left aligned content">
+        <a class="header">Hall: {{s.cinemaHallId}}</a>
+      </div>
+      <div class="middle aligned content">
+        <a class="header">RowNumber: {{s.rowNumber}}</a>
+      </div>
+
+      <div class="right aligned content">
+        <a class="header">SeatNumber: {{s.seatNumber}}</a>
+      </div>
+
+      <div class="right aligned content">
+        <button class="ui red button" (click)="deleteSeat(s)">Delete</button>
+      </div>
+    </div>
+</div>
+
+</div>

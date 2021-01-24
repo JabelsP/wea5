@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+input.ng-invalid{
+    border: 2px solid red !important;
+ }
+
+ textarea.ng-invalid{
+    border: 2px solid red !important;
+ }
+
+ select.ng-invalid{
+    border: 2px solid red !important;
+ }
+
+ .formMargin{
+    margin: 40px;
+ }

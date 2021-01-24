@@ -1,0 +1,52 @@
+
+<div class="formMargin">
+<form  class="ui  form" #rowCreate="ngForm">
+
+  <h2>Row Editor</h2>
+
+    <div class="field">
+        <label>RowNumber</label>
+        <input [(ngModel)]="newRowNumber" name="rowNumber" required pattern="[0-9]*">
+    </div>
+
+    <div class="field">
+        <label>Category</label>
+        <select class="ui fluid dropdown" [(ngModel)]="newCat" required name="category">
+            <option  *ngFor="let c of categories" value="{{c.name}}">{{c.name}}</option>
+        </select>
+    </div>
+
+    <button class="ui green button" [disabled]="rowCreate.invalid" (click)="onSubmit()"> Create Row <i class="right icon plus"></i></button>
+
+
+  
+  </form>
+
+
+
+<div class="ui items">
+    <div *ngFor="let r of rows" class="item">
+      <div class="ui left aligned content">
+        <a class="header">Hall: {{r.cinemaHallId}}</a>
+      </div>
+      <div class="middle aligned content">
+        <a class="header">RowNumber: {{r.rowNumber}}</a>
+      </div>
+
+      <div class="right aligned content">
+        <select class="ui fluid dropdown" #cat>
+            <option  *ngFor="let c of categories" value="{{c.name}}" [selected]="c.name==r.categroyName">{{c.name}}</option>
+        </select>
+      </div>
+
+      <div class="right aligned content">
+        <button class="ui yellow button" (click)="updateRow(r,cat.value)">Change Category </button>
+      </div>
+
+      <div class="right aligned content">
+        <button class="ui red button" (click)="deleteRow(r)">Delete</button>
+      </div>
+    </div>
+</div>
+
+</div>

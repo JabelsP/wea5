@@ -1,0 +1,20 @@
+<div class="ui search" style="margin-left: 10px;" >
+    <div class="ui icon input">
+
+
+      <div class="ui icon input">
+        <input (keyup)="keyup.emit(searchTerm.value)" #searchTerm class="prompt" type="text" placeholder="Search..."  >
+        <i class="search icon"></i>
+      </div>
+      
+      <i class="search icon"></i>
+    </div>
+    <div class="results transition" [ngClass]="{ visible: true}" >
+  
+      <a [routerLink]="film.id" (click)="filmSelected.emit(film); false" class="result" *ngFor="let film of foundFilms">
+        <div class="content">
+          <div class="title" >{{ film.title }}</div>
+        </div>
+      </a>
+    </div>
+</div>
